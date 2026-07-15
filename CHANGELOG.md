@@ -9,6 +9,16 @@ beta:
 - **MINOR** (0.x.0): new features or notable user-facing changes
 - **MAJOR** (1.0.0+): first stable release, then breaking changes only
 
+## [0.2.1] - 2026-07-16
+
+### Fixed
+- `getTailLengthSeconds()` reported a flat 2.0s regardless of the Amount
+  setting, but the exponential decay tuned in the shipped build can take
+  noticeably longer at high Amount. A host that uses this value to decide
+  how long to keep rendering after note-off (freezing a track, offline
+  bounce, silence detection) would cut the tail off audibly early. Now
+  reports a value that covers the worst case.
+
 ## [0.2.0] - 2026-07-15
 
 ### Added

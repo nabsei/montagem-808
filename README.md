@@ -17,6 +17,10 @@ ships as VST3 / AU / Standalone on macOS and Windows.
   · <a href="CHANGELOG.md">Changelog</a>
 </p>
 
+<p align="center">
+  Also listed on <a href="https://www.kvraudio.com/product/montagem-808-by-montagem">KVR Audio</a>.
+</p>
+
 ## Why one knob
 
 Same philosophy as the rest of the Montagem chain: one macro parameter, no
@@ -96,3 +100,17 @@ included in this source.
 **The compiled plugin (downloads / releases):** All rights reserved —
 free to use, not free to redistribute or resell. See the `TERMS.txt`
 included in each release download for the full terms.
+
+## Part of the Montagem chain
+
+Montagem 808 is one piece of a small family of one-knob plugins for
+funk automotivo / phonk production, in signal-chain order:
+
+- **Montagem 808** (this repo) — 808 slide synth (the instrument)
+- [Montagem Finisher](https://github.com/nabsei/montagem-finisher) — drive, tone, loudness
+- [Montagem Widener](https://github.com/nabsei/montagem-widener) — stereo width
+- [Montagem Punch](https://github.com/nabsei/montagem-punch) — transient shaping
+
+Also by the same author: [Delta](https://github.com/nabsei/delta), a
+phase-cancellation null-test / difference-checker plugin (a different tool
+for a different audience — audio engineers doing verification work).

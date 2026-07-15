@@ -42,7 +42,12 @@ public:
     const juce::String getName() const override { return "Montagem 808"; }
     bool acceptsMidi() const override { return true; }
     bool producesMidi() const override { return false; }
-    double getTailLengthSeconds() const override { return 2.0; }
+
+    // Worst-case decay time, not a flat guess -- a host uses this to decide
+    // how long to keep rendering after note-off. A fixed 2.0s was too short
+    // at high Amount settings (the exponential decay tuned in the shipped
+    // build takes noticeably longer).
+    double getTailLengthSeconds() const override { return 0.9 * 9.3; }
 
     int getNumPrograms() override { return 1; }
     int getCurrentProgram() override { return 0; }
