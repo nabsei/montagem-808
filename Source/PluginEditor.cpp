@@ -60,7 +60,8 @@ E808Editor::E808Editor(E808Processor& p)
     brandLabel.setFont(juce::Font(juce::FontOptions(10.0f, juce::Font::plain)));
     addAndMakeVisible(brandLabel);
 
-    setResizable(false, false);
+    setResizable(true, true);
+    setResizeLimits(400, 360, 900, 720);
     setSize(480, 440);
 
     startTimerHz(20);
@@ -117,7 +118,7 @@ void E808Editor::resized()
     amountValueLabel.setBounds(area.removeFromBottom(28));
     noteLabel.setBounds(area.removeFromBottom(20));
 
-    const int knobSize = 180;
+    const int knobSize = juce::jlimit(120, 260, juce::jmin(area.getWidth(), area.getHeight()) - 40);
     juce::Rectangle<int> knobArea(0, 0, knobSize, knobSize);
     knobArea.setCentre(area.getCentre());
     amountSlider.setBounds(knobArea);

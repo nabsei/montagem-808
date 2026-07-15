@@ -14,6 +14,7 @@ ships as VST3 / AU / Standalone on macOS and Windows.
 
 <p align="center">
   <strong><a href="https://github.com/nabsei/montagem-808/releases/latest">⬇ Download the latest beta</a></strong> — macOS and Windows, free.
+  · <a href="CHANGELOG.md">Changelog</a>
 </p>
 
 ## Why one knob
