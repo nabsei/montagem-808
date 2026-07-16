@@ -54,7 +54,7 @@ E808Editor::E808Editor(E808Processor& p)
     noteLabel.setFont(juce::Font(juce::FontOptions(13.0f, juce::Font::bold)));
     addAndMakeVisible(noteLabel);
 
-    brandLabel.setText("@montagem.808", juce::dontSendNotification);
+    brandLabel.setText("Bumpin Audio", juce::dontSendNotification);
     brandLabel.setJustificationType(juce::Justification::centredRight);
     brandLabel.setColour(juce::Label::textColourId, E808LookAndFeel::textDim.withAlpha(0.5f));
     brandLabel.setFont(juce::Font(juce::FontOptions(10.0f, juce::Font::plain)));

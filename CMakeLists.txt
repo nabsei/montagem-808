@@ -10,7 +10,7 @@ else()
 endif()
 
 juce_add_plugin(Montagem808
-    COMPANY_NAME "montagem.808"
+    COMPANY_NAME "Bumpin Audio"
     IS_SYNTH TRUE
     NEEDS_MIDI_INPUT TRUE
     NEEDS_MIDI_OUTPUT FALSE
