@@ -1,0 +1,54 @@
+MONTAGEM 808 — BETA (macOS only)
+===================================
+
+This is an early beta build. It is not yet notarized by Apple, so macOS
+will show a security warning the first time you use it. This is normal
+for an early-access indie plugin — here's how to get past it in ~30 seconds.
+
+Universal binary: works on both Apple Silicon (M1/M2/M3...) and Intel Macs.
+
+INSTALL
+-------
+
+1. Copy "Montagem 808.vst3" to:
+   ~/Library/Audio/Plug-Ins/VST3/
+
+2. Copy "Montagem 808.component" to:
+   ~/Library/Audio/Plug-Ins/Components/
+
+   (You can also use "Montagem 808.app" on its own — no DAW needed —
+   the plugin has a built-in on-screen keyboard to play it.)
+
+3. Open Terminal (Applications > Utilities > Terminal) and run:
+
+   xattr -cr ~/Library/Audio/Plug-Ins/VST3/"Montagem 808.vst3"
+   xattr -cr ~/Library/Audio/Plug-Ins/Components/"Montagem 808.component"
+   xattr -cr /path/to/"Montagem 808.app"
+
+   This removes the "downloaded from the internet" flag that would
+   otherwise make Gatekeeper block an unsigned plugin. It does not
+   disable your Mac's security — it just tells macOS this specific
+   file is one you trust.
+
+4. Rescan plugins in your DAW (or restart it) — Montagem 808 should
+   now show up under your instruments.
+
+PLAYING IT
+-----------
+
+This is an instrument, not an effect — load it on an instrument/MIDI
+track. Use your MIDI controller, or click directly on the on-screen
+keyboard built into the plugin's UI.
+
+TROUBLESHOOTING
+----------------
+
+If your DAW still refuses to load it: open System Settings > Privacy &
+Security, scroll down — you should see a message about "Montagem 808"
+being blocked, with an "Open Anyway" button. Click it once.
+
+QUESTIONS / BUGS
+-----------------
+
+This is a beta. If something sounds wrong or crashes your DAW, please
+report it — beta feedback directly shapes what ships in v1.

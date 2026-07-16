@@ -50,7 +50,12 @@ jobs:
 
       - name: Collect Standalone
         run: |
-          find build -name "Montagem808.app" -exec cp -R {} dist/macos/ \;
+          find build -name "Montagem 808.app" -exec cp -R {} dist/macos/ \;
+
+      - name: Add docs
+        run: |
+          cp INSTALL_Mac.txt dist/macos/INSTALL.txt
+          cp TERMS.txt dist/macos/TERMS.txt
 
       # ── Package ──
       - name: Create macOS zip
@@ -101,15 +106,21 @@ jobs:
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Force -Path dist\windows
-          # VST3 bundles are directories on Windows — filter for directories only
+          # VST3 bundles are directories on Windows -- filter for directories only
           Get-ChildItem -Recurse -Directory -Filter "*.vst3" build | `
             ForEach-Object { Copy-Item -Path $_.FullName -Destination dist\windows\ -Recurse -Force }
 
       - name: Collect Standalone
         shell: pwsh
         run: |
-          Get-ChildItem -Recurse -Filter "Montagem808.exe" build | `
+          Get-ChildItem -Recurse -Filter "Montagem 808.exe" build | `
             ForEach-Object { Copy-Item $_.FullName dist\windows\ -Force }
+
+      - name: Add docs
+        shell: pwsh
+        run: |
+          Copy-Item INSTALL_Windows.txt dist\windows\INSTALL.txt
+          Copy-Item TERMS.txt dist\windows\TERMS.txt
 
       # ── Package ──
       - name: Create Windows zip
@@ -134,9 +145,6 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/')
 
     steps:
-      - name: Checkout (to include TERMS.txt if present)
-        uses: actions/checkout@v4
-
       - name: Download macOS build
         uses: actions/download-artifact@v4
         with:
@@ -154,7 +162,7 @@ jobs:
           draft: false
           prerelease: false
           body: |
-            First public beta build. One-knob 808 slide synth, instrument at the front of the Montagem chain.
+            One-knob 808 slide synth, instrument at the front of the Montagem chain.
 
             Formats included:
 
@@ -163,7 +171,7 @@ jobs:
 
             ⚠️ Not code-signed / notarized yet. Each zip includes an INSTALL.txt with a short one-time step to get past macOS Gatekeeper / Windows SmartScreen on first run.
 
-            Bug reports and feedback welcome via GitHub Issues — they directly shape what ships in v1.
+            See CHANGELOG.md for the full version history. Bug reports and feedback welcome via GitHub Issues.
           files: |
             Montagem808_Beta_Mac.zip
             Montagem808_Beta_Windows.zip
