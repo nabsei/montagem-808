@@ -9,6 +9,15 @@ beta:
 - **MINOR** (0.x.0): new features or notable user-facing changes
 - **MAJOR** (1.0.0+): first stable release, then breaking changes only
 
+## [0.3.0] - 2026-07-16
+
+### Changed
+- Added a drive/saturation stage to the oscillator, tied to the Amount knob.
+  Modern phonk 808s carry a lot of harmonic overtones and are driven quite
+  hard -- researched against production references, since the previous sine/
+  triangle-only oscillator read closer to an older, cleaner trap 808 than
+  the genre's current sound.
+
 ## [0.2.1] - 2026-07-16
 
 ### Fixed

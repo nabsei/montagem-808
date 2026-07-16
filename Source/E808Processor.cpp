@@ -80,6 +80,14 @@ void E808Processor::renderBlock(juce::AudioBuffer<float>& buffer, int startSampl
     const float sineTriMix = juce::jmap(amount01, 0.0f, 1.0f, 0.8f, 0.65f);
     const float decayCoef = std::exp(-1.0f / (float)(lastSampleRate * decayTau));
 
+    // Modern phonk 808s carry a lot of harmonic overtones and are driven
+    // quite hard, unlike a cleaner sine-based trap 808 -- tied to the same
+    // Amount knob so a deeper slide also reads as a harder-driven hit. The
+    // exact drive curve shipped in the production plugin is tuned against
+    // reference material and is not reproduced in this public version.
+    const float driveDb = juce::jmap(amount01, 0.0f, 1.0f, 0.0f, 15.0f);
+    const float driveGain = juce::Decibels::decibelsToGain(driveDb);
+
     auto* left = buffer.getWritePointer(0, startSample);
     auto* right = buffer.getWritePointer(1, startSample);
 
@@ -119,8 +127,9 @@ void E808Processor::renderBlock(juce::AudioBuffer<float>& buffer, int startSampl
         const double normPhase = phase / juce::MathConstants<double>::twoPi;
         const float triVal = (float)(2.0 * std::abs(2.0 * normPhase - 1.0) - 1.0);
         const float osc = sineTriMix * sineVal + (1.0f - sineTriMix) * triVal;
+        const float driven = std::tanh(osc * driveGain) / std::tanh(driveGain);
 
-        const float sample = osc * ampEnvelope * velocityGain * 0.8f;
+        const float sample = driven * ampEnvelope * velocityGain * 0.8f;
         left[i] = sample;
         right[i] = sample;
     }
